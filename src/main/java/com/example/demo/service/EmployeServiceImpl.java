@@ -22,12 +22,6 @@ import com.example.demo.entities.Employe;
 import com.example.demo.entities.EmployeAddressMaster;
 import com.example.demo.repository.EmployeRepository;
 
-
-
-
-
-
-
 @Transactional
 @Service("employeeService")
 public class EmployeServiceImpl implements EmployeService {

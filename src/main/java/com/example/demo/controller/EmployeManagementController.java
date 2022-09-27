@@ -25,6 +25,7 @@ import com.example.demo.bean.EmployeBean;
 import com.example.demo.entities.Designation;
 import com.example.demo.entities.Employe;
 import com.example.demo.entities.EmployeAddressMaster;
+import com.example.demo.repository.EmployeRepository;
 import com.example.demo.service.DepartmentService;
 import com.example.demo.service.DesignationService;
 import com.example.demo.service.EmployeService;
@@ -45,6 +46,9 @@ public class EmployeManagementController {
 	
 	@Autowired
 	DesignationService designationService;
+	
+	@Autowired
+	EmployeRepository employeRepo;
 	
 	static final Logger logger  = LogManager.getLogger(EmployeManagementController.class.getName());
 	
@@ -222,9 +226,9 @@ public class EmployeManagementController {
 	}
    
 	@GetMapping(value="/employe/find/{id}")
-	public Map<String,String> findEmployeAddressMaster(@PathVariable Integer id){
+	public Iterable<Employe> findEmployeAddressMaster(){
 		//@PathVariable takes the part of url as value her {id} taken as id value
-		Map<String,String> message = new LinkedHashMap<>(); // to store student details
+		/*Map<String,String> message = new LinkedHashMap<>(); // to store student details
 	Employe Master;
 	Master = this.employeService.getEmploye(id); //fetches the student record from the database
 			//Getting student detail with help of getter methods
@@ -237,6 +241,9 @@ public class EmployeManagementController {
 		//message.put("CurrentAddress", Master.getAddress().getCurrentAddress());
 			
 		return message;
+		*/
+		
+		return employeRepo.findAll();
 	}
 
 
