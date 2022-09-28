@@ -1,7 +1,5 @@
 package com.example.demo.service;
-
 import javax.transaction.Transactional;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,15 +14,13 @@ import com.example.demo.entities.AddressType;
 import com.example.demo.repository.EmployeAddressMasterRepository;
 import com.example.demo.repository.EmployeRepository;
 
-
 @Transactional
 @Service("employeeMasterAddressService")
 public class EmployeAddressMasterServiceImpl implements EmployeAddressMasterService {
 
-	
 	@Autowired
 	private EmployeAddressMasterRepository employeeAddressMasterRepository;
-	
+
 	@Override
 	public String addEmployeAddressMaster(EmployeAddressMasterBean empadd) {
 		EmployeAddressMaster master = new EmployeAddressMaster();
@@ -39,7 +35,7 @@ public class EmployeAddressMasterServiceImpl implements EmployeAddressMasterServ
 		employeeAddressMasterRepository.save(master);
 		return "emplye address master addedd successfully";
 	}
-	
+
 	@Override
 	public String updateEmployeAddressMaster(EmployeAddressMasterBean empadd) {
 		EmployeAddressMaster master = new EmployeAddressMaster();
@@ -61,10 +57,10 @@ public class EmployeAddressMasterServiceImpl implements EmployeAddressMasterServ
 		employeeAddressMasterRepository.deleteById(id);
 		return "Entity deleted "+id;
 	}
-	
+
 	public  EmployeAddressMaster  getEmployeAddressMaster(int id)
 	{
 		return employeeAddressMasterRepository.findById(id).get();
 	}
-	
+
 }

@@ -12,16 +12,16 @@ import javax.persistence.Table;
 @Entity//mapped to database table
 @Table(name="Address_TYPE")
 public class AddressType implements Serializable {
-	
+
 	@Id //specified the primary key
 	@GeneratedValue(strategy=GenerationType.IDENTITY) //uses the database identity column
 	@Column(name="Type_ID",unique = true,nullable = false) //name is optional is variable name matches table field name
 	private Integer id;
-	
+
 	@Column(name="ADDRESS",nullable = false) // nullable checks whether null accepted, before db throws error
 	private String Address;
-	
-	
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -47,13 +47,13 @@ public class AddressType implements Serializable {
 		super();
 		this.id = id;
 		Address = currentAddress;
-		
+
 	}
 
 	public AddressType(String currentAddress) {
 		super();
 		Address = currentAddress;
-		
+
 	}
 
 	@Override
@@ -64,10 +64,5 @@ public class AddressType implements Serializable {
 			return "PermanentAddress";
 		//return "Type [id=" + id + ", Address=" + Address + "]";
 	}
-	
-	
-	
-	
-
 
 }

@@ -14,7 +14,6 @@ import com.example.demo.repository.AddressTypeRepository;
 @Service("typeService")
 public class AddressTypeServiceImpl implements AddressTypeService {
 
-	
 	@Autowired
 	private AddressTypeRepository typeRepository;
 	

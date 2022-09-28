@@ -13,22 +13,21 @@ import javax.persistence.Table;
 @Entity//mapped to database table
 @Table(name="EMPLOYEADDRESSMASTER")
 public class EmployeAddressMaster {
-	
+
 	@Id //specified the primary key
 	@GeneratedValue(strategy=GenerationType.IDENTITY) //uses the database identity column
 	@Column(name="ID",unique = true,nullable = false) //name is optional is variable name matches table field name
 	private Integer id;
-	
+
 	@Column(name="ADDRESS",nullable = false) // nullable checks whether null accepted, before db throws error
 	private String Address;
-	
-	
+
 	@ManyToOne(fetch=FetchType.LAZY)
-	 @JoinColumn(name="TYPEID",nullable = false)
+	@JoinColumn(name="TYPEID",nullable = false)
 	private AddressType Type;
-	
-	 @ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
-	 @JoinColumn(name="EMPID",nullable = false)//used to join the entity
+
+	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
+	@JoinColumn(name="EMPID",nullable = false)//used to join the entity
 	private Employe empid;
 
 	public EmployeAddressMaster(Integer id, String address,AddressType type,Employe empid) {
@@ -81,7 +80,4 @@ public class EmployeAddressMaster {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-
 }

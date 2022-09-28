@@ -18,13 +18,11 @@ public class Dependants implements Serializable{
 	
 private static final long serialVersionUID = 1L;
 	
-
     @Id//primary key
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="ID",unique = true,nullable = false)
 	private Integer id;
 
-    
   //Lazy--only fetch the related entities from the database when we use the relationship
     @ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
     @JoinColumn(name="EMPID",referencedColumnName = "ID",nullable= false)//used to join the entity
@@ -51,15 +49,12 @@ private static final long serialVersionUID = 1L;
 		this.id = id;
 	}
 	
-	
-
 	public Employe getEmp_id() {
 		return emp_id;
 	}
 	public void setEmp_id(Employe emp_id) {
 		this.emp_id = emp_id;
 	}
-	
 	
 	public String getName() {
 		return name;
@@ -68,14 +63,12 @@ private static final long serialVersionUID = 1L;
 		this.name = name;
 	}
 	
-	
 	public String getRelation() {
 		return relation;
 	}
 	public void setRelation(String relation) {
 		this.relation = relation;
 	}
-	
 	
 	public Double getAge() {
 		return age;

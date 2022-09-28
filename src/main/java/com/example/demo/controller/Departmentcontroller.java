@@ -14,30 +14,28 @@ import com.example.demo.service.DepartmentService;
 
 @RestController
 public class Departmentcontroller {
-	
+
 	@Autowired  //(object creation)
 	DepartmentService departmentService;
-	
-	
-	
+
 	@PostMapping("/Department/insert")
 	public Department addDepartment(@RequestBody Department department)
 	{
 		return departmentService.saveDepartment(department);
 	}
-	
+
 	@GetMapping(path ="/Department/findby/{id}")
 	public Department getDepartment(@PathVariable int id)
 	{
 		return departmentService.getDepartment(id);
 	}
-	
+
 	@PutMapping("/Department/update")
 	public  Department updateDepartment(@RequestBody Department department)
 	{
 		return departmentService.updateDepartment(department);
 	}
-	
+
 	@DeleteMapping(path ="/Department/{id}")
 	public String deleteDepartment(@PathVariable int id)
 	{

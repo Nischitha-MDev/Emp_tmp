@@ -15,6 +15,4 @@ public interface DesignationService {
 	public Designation updateDesignation(Designation designation);
 	public String deleteDesignation(int id);
 
-	
-	
 }

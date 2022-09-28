@@ -29,9 +29,6 @@ public class DependantController {
 	@Autowired
 	DependantService dependantService;
 	
-
-	
-	
 /*	@RequestMapping(value="/dependant/insert")//inserts new dependantS record into the table
 	public Map<String,String> insertDependants(
 			@RequestParam("name") String name,

@@ -30,11 +30,6 @@ import com.example.demo.service.DepartmentService;
 import com.example.demo.service.DesignationService;
 import com.example.demo.service.EmployeService;
 
-
-
-
-
-
 @RestController
 public class EmployeManagementController {
 	
@@ -86,9 +81,6 @@ public class EmployeManagementController {
         }
         return message;
     }
-	
-	
-	
 	
 	/*@RequestMapping(value="/Employe/update") //Updates student table
 	public Map<String,String> updateEmploye(@RequestParam("id") Integer id,@RequestParam("name") String name,@RequestParam("age") Double age,@RequestParam("deptid") Integer deptid ,@RequestParam("desid") Integer desid){
@@ -208,7 +200,7 @@ public class EmployeManagementController {
 	*/
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/employe/add")
-	public String insertEmploye(@RequestBody EmployeBean emp)
+	public Employe insertEmploye(@RequestBody Employe emp)
 	{
 		return employeService.addEmploye(emp);
 	}
@@ -225,10 +217,10 @@ public class EmployeManagementController {
 		return employeService.deleteEmploye(id);
 	}
    
-	@GetMapping(value="/employe/find/{id}")
-	public Iterable<Employe> findEmployeAddressMaster(){
+	@GetMapping(value="/employe/find")
+	public Iterable<Employe> findAllEmployeAddressMaster(){
 		//@PathVariable takes the part of url as value her {id} taken as id value
-		/*Map<String,String> message = new LinkedHashMap<>(); // to store student details
+	/*	Map<String,String> message = new LinkedHashMap<>(); // to store student details
 	Employe Master;
 	Master = this.employeService.getEmploye(id); //fetches the student record from the database
 			//Getting student detail with help of getter methods
@@ -237,14 +229,43 @@ public class EmployeManagementController {
 			message.put("JoiningDate", Master.getJoiningDate().toString());
 			message.put("Designation", Master.getDesignation().getName());
 			message.put("Department", Master.getDepartment().getName());
-		//	message.put("PermanentAddress", Master.getAddress().getPermanentAddress());
-		//message.put("CurrentAddress", Master.getAddress().getCurrentAddress());
+		//	message.put("PermanentAddress", Master.getAddressMaster().getPermanentAddress());
+			//message.put("CurrentAddress", Master.getAddressMaster().getCurrentAddress());
+			//message.put("OfficeAddress", Master.getAddressMaster().getOfficeAddress());
 			
-		return message;
-		*/
+		return message;*/
 		
 		return employeRepo.findAll();
 	}
+	
+	@GetMapping(value="/employe/find/{id}")
+	public Employe findEmployeAddressMaster(@PathVariable int id){
+/*		//@PathVariable takes the part of url as value her {id} taken as id value
+		Map<String,String> message = new LinkedHashMap<>(); // to store student details
+	Employe Master;
+	Master = this.employeService.getEmploye(id); //fetches the student record from the database
+			//Getting student detail with help of getter methods
+			message.put("ID", Master.getId().toString());
+			message.put("Name", Master.getName());
+			message.put("JoiningDate", Master.getJoiningDate().toString());
+			message.put("Designation", Master.getDesignation().getName());
+			message.put("Department", Master.getDepartment().getName());
+		//	message.put("PermanentAddress", Master.getAddressMaster().getPermanentAddress());
+			//message.put("CurrentAddress", Master.getAddressMaster().getCurrentAddress());
+			//message.put("OfficeAddress", Master.getAddressMaster().getOfficeAddress());
+			
+		return message;
+		*/
+		if(employeRepo.findById(id).isPresent())
+		{
+			return employeRepo.findById(id).get();
+		}
+		else
+			return null;
+		
+	}
+	
+	
 
 
 }

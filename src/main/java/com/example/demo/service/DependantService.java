@@ -14,12 +14,10 @@ public interface DependantService {
 	public Dependants insertDependants(Dependants dependant);
 	public Dependants updateDependants(Dependants dependant);
 	public boolean deleteDependants(Dependants dependant);
-	
+
 	public String addDependant(DependantBean dep);
 	public String updateDependant(DependantBean dep);
 	public String deleteDependant(int id);
 	public Dependants  getDependants(int id);
-	
-	
-	
+
 }

@@ -18,29 +18,29 @@ import com.example.demo.service.AddressTypeService;
 
 @RestController
 public class AddressTypeController {
-	
+
 	@Autowired
 	AddressTypeService addresstypeService;
 
-	
+
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value="/addresstype/add")
 	public AddressType addAddressType(@RequestBody AddressType type)
 	{
 		return addresstypeService.addAddressType(type);
 	}
-	
+
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value="/addresstype/update")
 	public AddressType updateAddressType(@RequestBody AddressType type)
 	{
 		return addresstypeService.updateAddressType(type);
 	}
-	
+
 	@GetMapping(path ="/addresstype/findby/{id}")
 	public AddressType getAddressType(@PathVariable int id)
 	{
 		return addresstypeService.getAddress(id);
 	}
-	
+
 	@DeleteMapping(path ="/addresstype/delete/{id}")
 	public String deleteAddressType(@PathVariable int id)
 	{
