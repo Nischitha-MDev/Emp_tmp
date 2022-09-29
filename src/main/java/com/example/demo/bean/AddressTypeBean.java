@@ -30,6 +30,4 @@ public class AddressTypeBean {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 }

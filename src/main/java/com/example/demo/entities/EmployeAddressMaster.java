@@ -19,28 +19,28 @@ public class EmployeAddressMaster {
 	@Column(name="ID",unique = true,nullable = false) //name is optional is variable name matches table field name
 	private Integer id;
 
-	@Column(name="ADDRESS",nullable = false) // nullable checks whether null accepted, before db throws error
-	private String Address;
+	@Column(name="PLACE",nullable = false) // nullable checks whether null accepted, before db throws error
+	private String Place;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="TYPEID",nullable = false)
 	private AddressType Type;
 
-	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
-	@JoinColumn(name="EMPID",nullable = false)//used to join the entity
-	private Employe empid;
+	//@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
+	//@JoinColumn(name="EMPID",nullable = false)//used to join the entity
+	//private Employe empid;
 
-	public EmployeAddressMaster(Integer id, String address,AddressType type,Employe empid) {
+	public EmployeAddressMaster(Integer id, String state,AddressType type,Employe empid) {
 		super();
 		this.id = id;
-		Address = address;
-		Type = type;
-		this.empid = empid;
+		this.Place = Place;
+		this.Type = type;
+		//this.empid = empid;
 	}
 
-	public EmployeAddressMaster(String address, AddressType type) {
+	public EmployeAddressMaster(String state, AddressType type) {
 		super();
-		Address = address;
+		Place = state;
 		Type = type;
 	}
 
@@ -52,12 +52,12 @@ public class EmployeAddressMaster {
 		this.id = id;
 	}
 
-	public String getAddress() {
-		return Address;
+	public String getState() {
+		return Place;
 	}
 
-	public void setAddress(String address) {
-		Address = address;
+	public void setState(String state) {
+		Place = state;
 	}
 
 	public AddressType getType() {
@@ -68,16 +68,47 @@ public class EmployeAddressMaster {
 		Type = type;
 	}
 
-	public Employe getEmpid() {
-		return empid;
-	}
+	//public Employe getEmpid() {
+	//	return empid;
+	//}
 
-	public void setEmpid(Employe empid) {
-		this.empid = empid;
-	}
+	//public void setEmpid(Employe empid) {
+	//	this.empid = empid;
+	//}
 
 	public EmployeAddressMaster() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "EmployeAddressMaster [id=" + id + ", place=" + Place +"]";
+	}
+
+
+	public EmployeAddressMaster(Integer id, String place,String type) {
+		super();
+		this.id = id;
+		this.Place = place;
+		
+	}
+
+
+	public EmployeAddressMaster(String place, String type) {
+		super();
+		this.Place = place;
+	
+	}
+
+
+	
+
+
+
+	
+/*	 @ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one employe
+	 @JoinColumn(name="EMPID",nullable = false)//used to join the entity
+	private Employe empid;*/
+
+	
 }

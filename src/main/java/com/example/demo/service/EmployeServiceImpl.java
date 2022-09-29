@@ -82,36 +82,39 @@ public class EmployeServiceImpl implements EmployeService {
 		return "employe created succesfully";*/
 
 		Employe master = new Employe();
-		AddressMaster add = new AddressMaster();
+		EmployeAddressMaster add = new EmployeAddressMaster();
 
-		master.setAddress(emp.getAddress());
+		//master.setAddress(emp.getAddress());
 		master.setjoiningdate(emp.getJoiningDate());
 		master.setName(emp.getName());
 		master.setDepartment(emp.getDepartment());
 		master.setDesignation(emp.getDesignation());
+		master.setAddressMaster(emp.getAddressMaster());
 		return employeeRepository.save(master);
 
 	}
 
 	@Override
-	public String updateEmploye(EmployeBean emp) {
-		Employe master = new Employe();
-		Department department = new Department();
-		Designation designation = new Designation();
+	public Employe updateEmploye(Employe emp) {
+		//Employe master = new Employe();
+		//Department department = new Department();
+		//Designation designation = new Designation();
 
 		//	AddressMaster address = new AddressMaster();
-		department.setId(emp.getDepartment().getId());
-		designation.setId(emp.getDesignation().getId());
+		//department.setId(emp.getDepartment().getId());
+		//designation.setId(emp.getDesignation().getId());
 
 		//	address.setId(emp.getAddress().getId());
+		Employe master = new Employe();
+		EmployeAddressMaster empadd = new EmployeAddressMaster();
+		master.setjoiningdate(emp.getJoiningDate());
 		master.setId(emp.getId());
-		master.setjoiningdate(emp.getjoiningdate());
-		master.setDepartment(department);
-		master.setDesignation(designation);
-		//	master.setAddressMaster(address);
+		//empadd.setId(emp.getAddressMaster().get);
 		master.setName(emp.getName());
-		employeeRepository.save(master);
-		return "employe updated succesfully";
+		master.setDepartment(emp.getDepartment());
+		master.setDesignation(emp.getDesignation());
+		master.setAddressMaster(emp.getAddressMaster());
+		return employeeRepository.save(master);
 
 	}
 	public String deleteEmploye(int id)
@@ -124,5 +127,7 @@ public class EmployeServiceImpl implements EmployeService {
 	{
 		return employeeRepository.findById(id).get();
 	}
+
+	
 
 }

@@ -55,7 +55,7 @@ public class AddressMasterServiceImpl implements AddressMasterService {
 	@Override
 	public String updateAddress(AddressBean address) {
 		AddressMaster master = new AddressMaster();
-		Employe emp=new Employe();
+		Employe emp = new Employe();
 		//emp.setId(address.getEmp_id().getId());
 		master.setId(address.getId());
 		master.setCurrentAddress(address.getCurrentAddress());

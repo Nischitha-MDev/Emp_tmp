@@ -45,18 +45,18 @@ public class Employe {
 
 	/*	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
 	@JoinColumn(name="Address_ID",nullable = false)
-	private AddressMaster addressMaster;*/
+	private AddressMaster addressMaster;
 
 	@OneToMany(fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
 	@JoinColumn(name="EMPADDRES_ID",referencedColumnName = "ID",nullable = false)
-	private List<AddressMaster> addressMaster;
+	private List<AddressMaster> addressMaster;*/
 
 
-	/*	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
-	@JoinColumn(name="ADDRESS_ID",nullable = false)
-	private List<AddressList> addressList;*/
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
+	@JoinColumn(name="EMPADDRES_ID",referencedColumnName = "ID",nullable = false)
+	private List<EmployeAddressMaster> addressMaster;
 
-	public Employe() {}
+	 public Employe() {}
 
 
 	public Employe(String name, Date joiningdate) {
@@ -72,37 +72,34 @@ public class Employe {
 		this.addressList = addressList;
 	}
 	 */
-
-	public List<AddressMaster> getAddress() {
-		return addressMaster;
-	}
-
-	public void setAddress(List<AddressMaster> addressMaster) {
-		this.addressMaster = addressMaster;
-	}
-
 	public Employe(Integer id) {
 		super();
 		this.id = id;
 	}
-
-	/*	public List<EmployeAddressMaster> getAddressList() {
-		return addressList;
+	public List<EmployeAddressMaster> getAddressMaster() {
+		return addressMaster;
 	}
-	public void setAddressList(List<EmployeAddressMaster> addressList) {
-		this.addressList = addressList;
-	}*/
+
+
+	public void setAddressMaster(List<EmployeAddressMaster> addressMaster) {
+		this.addressMaster = addressMaster;
+	}
+
 
 	public Integer getId() {
 		return this.id;
 	}
+	
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	
+
 
 	public Employe(Integer id, String name, Date joiningdate, Department department, Designation designation,
-			List<AddressMaster> addressMaster) {
+			List<EmployeAddressMaster> addressMaster) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -112,33 +109,39 @@ public class Employe {
 		this.addressMaster = addressMaster;
 	}
 
+
 	public String getName() {
 		return this.name;
 	}
-
+	
 	public void setName(String name) {
 		this.name=name;
 	}
-
+	
+	
 	public Date getJoiningDate() {
 		return this.joiningdate;
 	}
+	
+	
 
 	public void setjoiningdate(Date joiningdate) {
 		this.joiningdate = joiningdate;
 	}
-
+	
 	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
 	@JoinColumn(name="deptid",nullable = false)
 	public Department getDepartment() {
-
+		
 		return this.department;
 	}
-
+	
 	public void setDepartment(Department department) {
 		this.department= department;
 	}
-
+	
+	
+	
 	public Designation getDesignation() {
 		return designation;
 	}
@@ -147,14 +150,12 @@ public class Employe {
 		this.designation = designation;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Employe [id=" + id + ", name=" + name + ", joiningdate=" + joiningdate + ", department=" + department
 				+ ", designation=" + designation + ", addressMaster=" + addressMaster + "]";
 	}
-
-
-
 
 
 

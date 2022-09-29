@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,7 @@ import com.example.demo.bean.AddressBean;
 import com.example.demo.bean.EmployeBean;
 import com.example.demo.entities.AddressMaster;
 import com.example.demo.entities.Department;
+import com.example.demo.entities.EmployeAddressMaster;
 import com.example.demo.repository.AddressMasterRepository;
 import com.example.demo.service.AddressMasterService;
 import com.example.demo.service.DepartmentService;
@@ -27,7 +31,7 @@ public class AddressMasterController {
 	
 	@Autowired
 	AddressMasterRepository addressrepo;
-
+	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,value = "/address/add")
 	public String insertAddress(@RequestBody AddressBean address)
 	{

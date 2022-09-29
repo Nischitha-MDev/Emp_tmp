@@ -43,13 +43,7 @@ public class AddressMaster implements Serializable {
 	private Employe employeeModel;*/
 
 
-	public String getOfficeAddress() {
-		return OfficeAddress;
-	}
-
-	public void setOfficeAddress(String officeAddress) {
-		OfficeAddress = officeAddress;
-	}
+	
 
 	public AddressMaster(Integer id, String currentAddress, String permanentAddress, String officeAddress) {
 		super();
@@ -82,6 +76,13 @@ public class AddressMaster implements Serializable {
 
 	public void setPermanentAddress(String permanentAddress) {
 		PermanentAddress = permanentAddress;
+	}
+	public String getOfficeAddress() {
+		return OfficeAddress;
+	}
+
+	public void setOfficeAddress(String officeAddress) {
+		OfficeAddress = officeAddress;
 	}
 
 	public AddressMaster() {
