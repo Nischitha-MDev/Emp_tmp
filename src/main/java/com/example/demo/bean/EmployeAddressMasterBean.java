@@ -8,10 +8,7 @@ public class EmployeAddressMasterBean {
 	private String place;
 	private AddressType type;
 	//private Employe empid;
-	
-	
-	
-	
+
 	public EmployeAddressMasterBean(int id, String place, AddressType type, Employe empid) {
 		super();
 		this.id = id;
