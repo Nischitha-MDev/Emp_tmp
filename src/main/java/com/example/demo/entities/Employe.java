@@ -17,65 +17,89 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
+
+
+
 @Entity//mapped to database table
 @Table(name="EMPLOYE")//add the table name in the particular database
 public class Employe {
 
+	
 	private static final long serialVersionUID = 1L;
-
+	
+	
 	@Id//primary key
 	@GeneratedValue(strategy=GenerationType.IDENTITY)//auto increment
 	@Column(name="ID",unique = true,nullable = false)
 	private Integer id;
-
+	
 	@Column(name="NAME",nullable = false)
 	private String name;
-
+	
 	@Column(name="JOININGDATE",nullable = false)
 	private Date joiningdate;
-
+	
 	//Lazy--only fetch the related entities from the database when we use the relationship
 	@ManyToOne(fetch=FetchType.EAGER)//Manytoone since many employe belong to one department,
 	@JoinColumn(name="DEPTID",referencedColumnName = "ID",nullable = false)//used to join the entity
 	private Department department;
-
+	
 	@ManyToOne(fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
 	@JoinColumn(name="DESID",referencedColumnName = "ID",nullable = false)
 	private Designation designation;
-
-	/*	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
+	
+/*	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
 	@JoinColumn(name="Address_ID",nullable = false)
-	private AddressMaster addressMaster;
-
-	@OneToMany(fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
+	private AddressMaster addressMaster;*/
+	
+/*	@OneToMany(fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
 	@JoinColumn(name="EMPADDRES_ID",referencedColumnName = "ID",nullable = false)
 	private List<AddressMaster> addressMaster;*/
-
-
-	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
+	
+	//cascade=CascadeType.PERSIST,
+	@OneToMany(cascade=CascadeType.ALL)//,fetch=FetchType.EAGER)//Manytoone since many employe belong to one department
 	@JoinColumn(name="EMPADDRES_ID",referencedColumnName = "ID",nullable = false)
 	private List<EmployeAddressMaster> addressMaster;
+	
+	
+	
+/*	@ManyToOne(fetch=FetchType.LAZY)//Manytoone since many employe belong to one department
+	@JoinColumn(name="ADDRESS_ID",nullable = false)
+	private List<AddressList> addressList;*/
 
-	 public Employe() {}
-
-
+public Employe() {}
+	
+	
 	public Employe(String name, Date joiningdate) {
-		super();
-		this.name = name;
-		this.joiningdate = joiningdate;
-	}
+	super();
+	this.name = name;
+	this.joiningdate = joiningdate;
+    }
 
-	/*public List<AddressList> getAddressList() {
+
+/*public List<AddressList> getAddressList() {
 		return addressList;
 	}
 	public void setAddressList(List<AddressList> addressList) {
 		this.addressList = addressList;
 	}
-	 */
+*/
+
 	public Employe(Integer id) {
 		super();
 		this.id = id;
 	}
+
+	
+/*	public List<EmployeAddressMaster> getAddressList() {
+		return addressList;
+	}
+	public void setAddressList(List<EmployeAddressMaster> addressList) {
+		this.addressList = addressList;
+	}*/
+
+
 	public List<EmployeAddressMaster> getAddressMaster() {
 		return addressMaster;
 	}
@@ -158,10 +182,7 @@ public class Employe {
 	}
 
 
-
-
-
-
+	
 
 
 }
